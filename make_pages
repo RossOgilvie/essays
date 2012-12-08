@@ -15,9 +15,9 @@ echo $name >> $out_html
 echo "</title>" >> $out_html
 cat templates/page_top.html >> $out_html
 
-markedjs="js/marked.js"
-markd=`js -f $markedjs -e "var text = read(\"$rpath\"); print(marked(text));"`
-echo $markd >> $out_html
+markdown $rpath
+cat source/$name.html >> $out_html
+rm source/$name.html
 
 cat templates/page_bottom.html >> $out_html
 
