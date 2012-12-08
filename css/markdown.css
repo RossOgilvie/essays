@@ -17,6 +17,35 @@ a, a:visited {
     color: black;
 }
 
+footer {
+	text-align: center;
+	margin-top: 40px;
+}
+
+/*
+Sidebar!!
+*/
+#sidebar {
+	width:20px;
+	background: #eee;
+	position:fixed;
+	top:1em;
+	right:1em;
+	padding:10px;
+}
+#sidebar-links {
+	display: none;
+}
+#content {
+	margin-right: 35px;
+}
+#sidebar ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	text-align: center;
+}
 /* Specific block types; easier than writing <div class=" .... "> */
 
 loj
@@ -58,3 +87,4 @@ eng
 	margin: 1em;
 	display: block;
 }
+

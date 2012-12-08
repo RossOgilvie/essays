@@ -1,0 +1,33 @@
+#!/bin/zsh
+
+#clean current directory
+rm *.html
+
+#for each markdown file, make a page
+for rpath in source/*.md; do
+
+name=${${rpath/source\//}/\.md/}
+out_html=$name.html
+touch $out_html
+
+echo "<html><head><title>" >> $out_html
+echo $name >> $out_html
+echo "</title>" >> $out_html
+cat templates/page_top.html >> $out_html
+
+markedjs="js/marked.js"
+markd=`js -f $markedjs -e "var text = read(\"$rpath\"); print(marked(text));"`
+echo $markd >> $out_html
+
+cat templates/page_bottom.html >> $out_html
+
+echo "<li><a href=\"$out_html\" title=\"$name\">$name</a></li>" >> index_temp
+done
+
+cp templates/index_top.html index.html
+cat index_temp >> index.html
+echo "</ul>" >> index.html
+cat templates/page_bottom.html >> index.html
+rm index_temp
+
+cp templates/view.html view.html
